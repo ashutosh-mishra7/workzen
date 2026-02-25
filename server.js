@@ -18,7 +18,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
-  "https://workzen.vercel.app", // change after frontend deploy
+  "https://workzen-7.vercel.app", 
 ];
 
 app.use(
