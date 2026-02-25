@@ -1,0 +1,42 @@
+# dependencies
+node_modules/
+
+# production build
+/build
+/dist
+
+# environment variables (IMPORTANT)
+.env
+.env.local
+.env.development
+.env.production
+
+# firebase cache
+.firebase/
+.firebaserc
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# editor files
+.vscode/
+.idea/
+
+# temporary files
+*.tmp
+*.temp
+
+# cache
+.cache/
+
+# system files
+.env*.local
+
+# optional
+coverage/
