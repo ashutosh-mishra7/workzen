@@ -1,24 +1,23 @@
 # dependencies
 node_modules/
 
-# production build
-/build
-/dist
-
-# environment variables (IMPORTANT)
+# env files
 .env
-.env.local
-.env.development
-.env.production
-
-# firebase cache
-.firebase/
-.firebaserc
+.env.*
+client/.env
+client/.env.*
 
 # logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# build folders
+dist/
+build/
+client/dist/
 
 # OS files
 .DS_Store
@@ -28,15 +27,5 @@ Thumbs.db
 .vscode/
 .idea/
 
-# temporary files
-*.tmp
-*.temp
-
-# cache
-.cache/
-
-# system files
-.env*.local
-
-# optional
-coverage/
+# misc
+*.local

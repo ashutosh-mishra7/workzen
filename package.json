@@ -1,17 +1,19 @@
 {
-  "name": "taskmanager",
+  "name": "workzen-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "WorkZen Backend API",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "client": "npm run dev --prefix client",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "npm run dev --prefix client"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["workzen", "taskmanager", "mern"],
+  "author": "Ashu",
   "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
