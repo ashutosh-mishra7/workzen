@@ -21,9 +21,6 @@ app.use(cors({
   credentials: true,
 }));
 
-// IMPORTANT
-app.options("*", cors());
-
 /* ================= MIDDLEWARE ================= */
 
 app.use(express.json());
@@ -37,7 +34,10 @@ app.use("/api/tasks", require("./routes/tasks"));
 /* ================= HEALTH ================= */
 
 app.get("/api/health", (req, res) => {
-  res.json({ status: "ok", message: "WorkZen API running" });
+  res.json({
+    status: "ok",
+    message: "WorkZen API running"
+  });
 });
 
 /* ================= START ================= */
