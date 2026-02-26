@@ -18,25 +18,25 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
-  "https://workzen-7.vercel.app",
+  "https://workzen.vercel.app", // change after frontend deploy
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
+
+      // allow requests with no origin (Postman, mobile apps)
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
+      } else {
+        return callback(null, true); // allow temporarily
       }
-
-      return callback(null, true);
     },
     credentials: true,
   })
 );
-
-/* IMPORTANT: DO NOT USE app.options("*") in Express 5 */
 
 /* ================= MIDDLEWARE ================= */
 
@@ -48,7 +48,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/projects", require("./routes/projects"));
 app.use("/api/tasks", require("./routes/tasks"));
 
-/* ================= HEALTH ================= */
+/* ================= HEALTH CHECK ================= */
 
 app.get("/api/health", (req, res) => {
   res.status(200).json({
@@ -57,27 +57,20 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-/* ================= ROOT ================= */
-
-app.get("/", (req, res) => {
-  res.json({
-    message: "WorkZen API running",
-  });
-});
-
 /* ================= ERROR HANDLER ================= */
 
 app.use((err, req, res, next) => {
-  console.error("SERVER ERROR:", err);
+  console.error("ERROR:", err.stack);
 
   res.status(err.status || 500).json({
-    message: err.message || "Internal Server Error",
+    message:
+      err.message || "Internal Server Error",
   });
 });
 
-/* ================= START ================= */
+/* ================= START SERVER ================= */
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
