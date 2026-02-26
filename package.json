@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "client": "npm run dev --prefix client"
+    "client": "npm run dev --prefix client",
+    "build": "npm install"
   },
   "keywords": [
     "workzen",
@@ -16,7 +17,7 @@
   "author": "Ashu",
   "license": "ISC",
   "engines": {
-    "node": ">=18"
+    "node": "18.x"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

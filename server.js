@@ -18,20 +18,18 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
-  "https://workzen.vercel.app", // change after frontend deploy
+  "https://workzen-7.vercel.app",
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-
-      // allow requests with no origin (Postman, mobile apps)
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
+        callback(null, true);
       } else {
-        return callback(null, true); // allow temporarily
+        callback(null, true);
       }
     },
     credentials: true,
@@ -43,6 +41,10 @@ app.use(
 app.use(express.json());
 
 /* ================= ROUTES ================= */
+
+app.get("/", (req, res) => {
+  res.send("WorkZen API running");
+});
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/projects", require("./routes/projects"));
@@ -63,8 +65,7 @@ app.use((err, req, res, next) => {
   console.error("ERROR:", err.stack);
 
   res.status(err.status || 500).json({
-    message:
-      err.message || "Internal Server Error",
+    message: err.message || "Internal Server Error",
   });
 });
 
